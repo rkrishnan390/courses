@@ -86,6 +86,27 @@ class LinkedList(object):
             # Set the link of the preceding node to the link of the current node
             ith_node.link = current_node.link
 
+    def reverse(self):
+        # Get the last node
+        last_node = self.getNode(-1)
+
+        # Set the last node as the first prev_node
+        prev_node = last_node
+        for i in range(self.length()-2, -1, -1):
+            # Get the current node starting with the 2nd to last
+            current_node = self.getNode(i)
+
+            # Address of prev node is now the current node
+            prev_node.link = current_node
+
+            # Set the prev node as the current node
+            prev_node = current_node
+
+        # At the first node, so set its link to null and the head to the last node
+        prev_node.link = None
+        self.head = last_node
+
+
     def getEntry(self, position: int=-1) -> int:
         return self.getNode(position).data
 
