@@ -86,6 +86,19 @@ def reverseTest():
 
     return ll
 
+def reverseRecursiveTest():
+    ll = LinkedList()
+
+    for i in range(1,11):
+        ll.insert(i)
+
+    print("Initial test before reversing recursively.")
+    printList(ll)
+    ll.reverseRecursively(ll.getNode(0))
+    print("List after reversing.")
+    printList(ll)
+
+
 def printForwardRecursivelyTest():
     ll = LinkedList()
     for i in range(1,11):
@@ -119,3 +132,6 @@ printForwardRecursivelyTest()
 
 print("Print Backward Recursively test.")
 printBackwardRecursivelyTest()
+
+print("Reverse Recursively test.")
+reverseRecursiveTest()
