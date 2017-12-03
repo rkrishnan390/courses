@@ -113,6 +113,14 @@ class LinkedList(object):
         else:
             self.forwardPrint(node.link)
 
+    def backwardPrint(self, node: 'Node'):
+        if node.link is None:
+            print(node.data)
+            return 0
+        else:
+            self.backwardPrint(node.link)
+            print(node.data)
+
     def getEntry(self, position: int=-1) -> int:
         return self.getNode(position).data
 
