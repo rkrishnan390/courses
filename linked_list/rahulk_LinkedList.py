@@ -106,6 +106,16 @@ class LinkedList(object):
         prev_node.link = None
         self.head = last_node
 
+    def reverseRecursively(self, node: 'Node'):
+        if node.link is None:
+            self.head = node
+            return 0
+        else:
+            self.reverseRecursively(node.link)
+            node.link.link = node
+            if node == node.link.link:
+                node.link = None
+
     def forwardPrint(self, node: 'Node'):
         print(node.data)
         if node.link is None:
