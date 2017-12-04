@@ -113,8 +113,7 @@ class LinkedList(object):
         else:
             self.reverseRecursively(node.link)
             node.link.link = node
-            if node == node.link.link:
-                node.link = None
+            node.link = None
 
     def forwardPrint(self, node: 'Node'):
         print(node.data)
