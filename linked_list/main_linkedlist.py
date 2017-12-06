@@ -1,6 +1,6 @@
 
 import os
-from rahulk_DoublyLinkedList import DoublyLinkedList
+from LinkedList import LinkedList
 
 def clear():
     os.system('clear')
@@ -11,107 +11,115 @@ def printList(linked_list):
         print("Value at %s is %s" % (position, value))
     print(''.join(['*']*23))
 
-def testInsertAtBeginning(dll: DoublyLinkedList):
+def testInsertAtBeginning(ll):
     # Add values 2, 4, 6
-    dll.insert(2)
-    dll.insert(4)
-    dll.insert(6)
+    ll.insert(2)
+    ll.insert(4)
+    ll.insert(6)
     print("After adding values '2, 4, 6'")
-    printList(dll)
+    printList(ll)
 
 
-def testInsertAtN(dll: DoublyLinkedList):
+def testInsertAtN(ll):
     # Insert value 3 into position
-    dll.insert(3, 1)
+    ll.insert(3,1)
     print("After inserting value 3 into position 1")
-    printList(dll)
+    printList(ll)
 
     # Insert value 5 at position 3, and 1 at position 0
-    dll.insert(5, 3)
-    dll.insert(1, 0)
+    ll.insert(5,3)
+    ll.insert(1,0)
     print("After inserting value 5 at position 3, and value 1 at position 0")
-    printList(dll)
+    printList(ll)
 
     # Insert values 7, 8, and 10; then insert value 9 at position 8
-    dll.insert(7)
-    dll.insert(8)
-    dll.insert(10)
-    dll.insert(9, 8)
+    ll.insert(7)
+    ll.insert(8)
+    ll.insert(10)
+    ll.insert(9,8)
     print("After inserting values 7, 8, and 10; then inserting value 9 at position 8")
-    printList(dll)
+    printList(ll)
 
     print("Final list.")
-    printList(dll)
+    printList(ll)
 
-
-def testDelete(dll: DoublyLinkedList):
-    print("Test delete.")
-
-    dll.delete()
+    ll.delete()
     print("After deleting last element.")
-    printList(dll)
+    printList(ll)
 
-    dll.delete(0)
+
+def testDelete(ll):
+    ll.delete(0)
     print("After deleting first element.")
-    printList(dll)
+    printList(ll)
 
-    dll.delete(4)
+    ll.delete(4)
     print("After deleting fourth element.")
-    printList(dll)
+    printList(ll)
 
 
 def initialTest():
     # Instantiate the list
-    dll = DoublyLinkedList()
+    ll = LinkedList()
 
     # Some beginning inserts
-    testInsertAtBeginning(dll)
+    testInsertAtBeginning(ll)
 
     # Some arbitrary inserts
-    testInsertAtN(dll)
+    testInsertAtN(ll)
 
     # Some Deletions
-    testDelete(dll)
+    testDelete(ll)
 
 
 def reverseTest():
-    dll = DoublyLinkedList()
+    ll = LinkedList()
 
     for i in range(1,11):
-        dll.insert(i)
+        ll.insert(i)
 
     print("Initial list before reversing.")
-    printList(dll)
-    dll.reverseRecursively()
+    printList(ll)
+    ll.reverse()
     print("List after reversing.")
-    printList(dll)
+    printList(ll)
 
-    return dll
+    return ll
+
+def reverseRecursiveTest():
+    ll = LinkedList()
+
+    for i in range(1,11):
+        ll.insert(i)
+
+    print("Initial test before reversing recursively.")
+    printList(ll)
+    ll.reverseRecursively(ll.getNode(0))
+    print("List after reversing.")
+    printList(ll)
 
 
 def printForwardRecursivelyTest():
-    dll = DoublyLinkedList()
+    ll = LinkedList()
     for i in range(1,11):
-        dll.insert(i)
+        ll.insert(i)
 
     print("Initial list")
-    printList(dll)
+    printList(ll)
 
     print("Printing recursively forward.")
-    dll.printForwardRecursively()
-
+    ll.forwardPrint(ll.getNode(0))
 
 def printBackwardRecursivelyTest():
-    dll = DoublyLinkedList()
+    ll = LinkedList()
     for i in range(1,11):
-        dll.insert(i)
+        ll.insert(i)
 
     print("Initial list")
-    printList(dll)
+    printList(ll)
 
     print("Printing recursively backward.")
-    dll.printBackwardRecursively()
-
+    ll.backwardPrint(ll.getNode(0))
 
 print("Initial test.")
 initialTest()
@@ -125,3 +133,5 @@ printForwardRecursivelyTest()
 print("Print Backward Recursively test.")
 printBackwardRecursivelyTest()
 
+print("Reverse Recursively test.")
+reverseRecursiveTest()
