@@ -90,8 +90,12 @@ class DoublyLinkedList(object):
             right_node.reverse_link = new_node
 
     def delete(self, position: int=None):
+        # Only 1 node
+        if self.length() == 1:
+            self.head = None
+
         # If no position specified; remove from end
-        if position is None:
+        elif position is None:
             last_node = self.getNodeRecursive(self.length()-1)
             left_node = last_node.reverse_link
 

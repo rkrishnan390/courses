@@ -66,7 +66,10 @@ class LinkedList(object):
 
     def delete(self, position: int=None):
         # Delete the first entry
-        if position==0:
+        # Only 1 node
+        if self.length() == 1:
+            self.head = None
+        elif position==0:
             # Get the 2nd node and set it as the new head
             ith_node = self.getNode(1)
             self.head = ith_node
@@ -118,20 +121,23 @@ class LinkedList(object):
     def forwardPrint(self, node: 'Node'):
         print(node.data)
         if node.link is None:
-            return 0
+            return
         else:
             self.forwardPrint(node.link)
 
     def backwardPrint(self, node: 'Node'):
         if node.link is None:
             print(node.data)
-            return 0
+            return
         else:
             self.backwardPrint(node.link)
             print(node.data)
 
     def getEntry(self, position: int=-1) -> int:
-        return self.getNode(position).data
+        try:
+            return self.getNode(position).data
+        except AttributeError as _:
+            return None
 
     def getNode(self, position: int) -> Union['Node', None]:
         # Last node
